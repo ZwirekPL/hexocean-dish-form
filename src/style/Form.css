@@ -4,3 +4,35 @@
   padding: 2rem;
   text-align: center;
 }
+.wrapper {
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  width: clamp(300px, 600px, 40%);
+}
+label {
+  display: none;
+}
+input,
+select,
+option {
+  border-radius: 6px;
+  height: 32px;
+  font-size: 1rem;
+}
+input,
+select {
+  margin-top: 0.5rem;
+}
+input[type="submit"] {
+  margin-top: 1rem;
+  border-radius: 6px;
+  background: linear-gradient(145deg, #454545, #525252);
+  box-shadow: 20px 20px 60px #414141, -20px -20px 60px #595959;
+}
