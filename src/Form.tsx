@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import "./style/Form.css";
-
+import Pizza from "./components/pizza";
 enum TypeEnum {
   pizza = "pizza",
   soup = "soup",
@@ -9,16 +9,16 @@ enum TypeEnum {
 }
 
 interface IFormInput {
-  name: String;
-  preparation_time: Number;
+  name: string;
+  preparation_time: number;
   type: TypeEnum;
-  no_of_slices: Number;
-  diameter: Number;
-  spiciness_scale: Number;
-  slices_of_bread: Number;
+  no_of_slices: number;
+  diameter: number;
+  spiciness_scale: number;
+  slices_of_bread: number;
 }
 
-export default function App() {
+export default function Form() {
   const {
     register,
     handleSubmit,
@@ -29,9 +29,13 @@ export default function App() {
 
   const type = watch("type");
   const valueOfName = watch("name");
+  const diameter = watch("diameter", 25);
+
+  console.log(diameter);
 
   return (
     <div className="wrapper">
+      {type === "pizza" && <Pizza size={diameter} />}
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <label htmlFor="name">Dish Name:</label>
         <input
@@ -89,7 +93,7 @@ export default function App() {
               type="range"
               max="45"
               min="25"
-              step="0.5"
+              step="0.1"
               aria-invalid={errors.diameter ? "true" : "false"}
               {...register("diameter", {
                 required: "Please enter diameter of pizza.",
