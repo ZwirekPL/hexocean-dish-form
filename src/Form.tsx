@@ -33,12 +33,13 @@ export default function Form() {
   const type = watch("type");
   const valueOfName = watch("name");
   const diameter = watch("diameter", 25);
+  const noOfSlices = watch("no_of_slices", 1);
   const spiciness = watch("spiciness_scale", 1);
   const slicesOfBread = watch("slices_of_bread", 1);
 
   return (
     <div className="wrapper">
-      {type === "pizza" && <Pizza size={diameter} />}
+      {type === "pizza" && <Pizza size={diameter} noOfSlices={noOfSlices} />}
       {type === "soup" && <Soup spiciness={spiciness} />}
       {type === "sandwich" && <Sandwich slicesOfBread={slicesOfBread} />}
       <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -82,6 +83,9 @@ export default function Form() {
               placeholder="Number of slices"
               id="no_of_slices"
               type="number"
+              // Can you cut a pizza into an odd number of pieces?
+              step={2}
+              max={8}
               aria-invalid={errors.no_of_slices ? "true" : "false"}
               {...register("no_of_slices", {
                 required: "Please enter number of slices.",
