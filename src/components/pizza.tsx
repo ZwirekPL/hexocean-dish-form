@@ -36,3 +36,4 @@ const Pizza = ({ size }: PizzaProps) => {
 };
 
 export default Pizza;
+// add handle and style to slices pizza

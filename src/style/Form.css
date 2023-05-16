@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap");
 #root {
+  font-family: "Poppins", sans-serif;
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
 }
+
 /* FORM START */
 .wrapper {
   width: 80vw;
@@ -36,6 +39,7 @@
   display: flex;
   flex-direction: column;
   width: clamp(300px, 600px, 40%);
+  z-index: 3;
 }
 label {
   display: none;
@@ -219,3 +223,47 @@ input[type="submit"] {
     padding-top: 0.5rem;
   }
 }
+/* SOUP END */
+/* SANDWICH START */
+.sandwich-container {
+  width: clamp(300px, 600px, 40%);
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.sandwich-error {
+  font-size: 1.5rem;
+}
+.sandwich-error p:first-child {
+  font-weight: 900;
+  color: #ea5353;
+}
+.bread {
+  position: relative;
+  width: 50px;
+  height: 80px;
+}
+.bread-base {
+  width: 4.96rem;
+  height: 5.4rem;
+  position: absolute;
+  background-color: #ffda96;
+  z-index: 2;
+  top: 0.48rem;
+  border-radius: 2.4rem 2.4rem 0.8rem 0.8rem;
+  border: 2.4px solid black;
+}
+.bread-shadow {
+  position: absolute;
+  width: 5.48rem;
+  height: 5.84rem;
+  background-color: #d3885c;
+  z-index: 1;
+  left: 0.12rem;
+  top: 0.12rem;
+  border: 2px solid black;
+  border-radius: 2.8rem 3.6rem 1.6rem 4rem;
+}
+/* SANDWICH END */
