@@ -32,10 +32,10 @@ export default function Form() {
 
   const type = watch("type");
   const valueOfName = watch("name");
-  const diameter = watch("diameter", 25);
-  const noOfSlices = watch("no_of_slices", 1);
-  const spiciness = watch("spiciness_scale", 1);
-  const slicesOfBread = watch("slices_of_bread", 1);
+  const diameter = watch("diameter", 45);
+  const noOfSlices = watch("no_of_slices", 0);
+  const spiciness = watch("spiciness_scale", 0);
+  const slicesOfBread = watch("slices_of_bread", 0);
 
   return (
     <div className="wrapper">
@@ -119,7 +119,7 @@ export default function Form() {
                 <input
                   type="radio"
                   value="1"
-                  defaultChecked
+                  // defaultChecked
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
                     required: "Please enter spiciness of soup.",

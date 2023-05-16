@@ -23,16 +23,18 @@ const Soup = ({ spiciness }: SoupProps) => {
           scale: `${spiciness / 5}`,
         }}
       />
-      <img
-        src={leaf}
-        alt="Animated leaf pepper"
-        width={75}
-        className="soup-leaf"
-        style={{
-          display: spiciness < 5 ? "block" : "none",
-          scale: `${1.5 / spiciness}`,
-        }}
-      />
+      {spiciness > 0 && (
+        <img
+          src={leaf}
+          alt="Animated leaf pepper"
+          width={75}
+          className="soup-leaf"
+          style={{
+            display: spiciness < 5 ? "block" : "none",
+            scale: `${1.5 / spiciness}`,
+          }}
+        />
+      )}
     </div>
   );
 };
