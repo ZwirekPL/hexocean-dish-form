@@ -2,7 +2,33 @@ type PizzaProps = { size: number; noOfSlices: number };
 
 const Pizza = ({ size, noOfSlices }: PizzaProps) => {
   const numberOfPizzaCut = noOfSlices > 1 ? noOfSlices / 2 : noOfSlices;
-  // console.log(numberOfPizzaCut);
+  console.log(numberOfPizzaCut);
+  const cuttingDeg = (index: number) => {
+    if (index === 0) {
+      return "180";
+    }
+    if (index === 1) {
+      return "90";
+    }
+    if (index === 2) {
+      return "45";
+    }
+    if (index === 3) {
+      return "135";
+    }
+    if (index === 4) {
+      return "22.5";
+    }
+    if (index === 5) {
+      return "112.5";
+    }
+    if (index === 6) {
+      return "157.5";
+    }
+    if (index === 7) {
+      return "247.5";
+    }
+  };
 
   return (
     <div className={`pizza-container`} style={{ scale: `${size / 30}` }}>
@@ -12,9 +38,9 @@ const Pizza = ({ size, noOfSlices }: PizzaProps) => {
             <div
               className="pizza-slice"
               style={{
-                rotate: `${index < 3 ? 360 / (index * 4) : 3 * 45}deg`,
+                rotate: `${cuttingDeg(index)}deg`,
               }}
-              //for max 8 slices
+              //for max 16 slices
             ></div>
           )
         )}

@@ -85,7 +85,7 @@ export default function Form() {
               type="number"
               // Can you cut a pizza into an odd number of pieces?
               step={2}
-              max={8}
+              max={16}
               aria-invalid={errors.no_of_slices ? "true" : "false"}
               {...register("no_of_slices", {
                 required: "Please enter number of slices.",
