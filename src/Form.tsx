@@ -268,3 +268,11 @@ export default function Form() {
     </div>
   );
 }
+//validate form
+// handle error
+// try send to server
+// validate error from server
+// refactor
+// write a readme
+//15h - writing
+// push to vercel
