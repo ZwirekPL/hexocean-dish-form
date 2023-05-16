@@ -51,6 +51,11 @@ option {
   height: 32px;
   font-size: 1rem;
 }
+input::placeholder,
+select::placeholder,
+option::placeholder {
+  font-family: "Poppins", sans-serif;
+}
 input,
 select {
   margin-top: 0.5rem;

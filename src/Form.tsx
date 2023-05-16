@@ -248,6 +248,7 @@ export default function Form() {
             <label htmlFor="slices_of_bread">Slices Of Bread:</label>
             <input
               id="slices_of_bread"
+              placeholder="Number of slices of bread"
               type="number"
               min="1"
               max="24"
