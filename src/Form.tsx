@@ -2,6 +2,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 import "./style/Form.css";
 import Pizza from "./components/pizza";
+import Soup from "./components/soup";
+
 enum TypeEnum {
   pizza = "pizza",
   soup = "soup",
@@ -30,12 +32,12 @@ export default function Form() {
   const type = watch("type");
   const valueOfName = watch("name");
   const diameter = watch("diameter", 25);
-
-  console.log(diameter);
+  const spiciness = watch("spiciness_scale", 1);
 
   return (
     <div className="wrapper">
       {type === "pizza" && <Pizza size={diameter} />}
+      {type === "soup" && <Soup spiciness={spiciness} />}
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <label htmlFor="name">Dish Name:</label>
         <input
@@ -102,20 +104,141 @@ export default function Form() {
           </>
         )}
         {type === "soup" && (
-          <>
-            <label htmlFor="spiciness_scale">Spiciness Scale:</label>
-            <input
-              placeholder="Spiciness Scale"
-              id="spiciness_scale"
-              type="number"
-              min="1"
-              max="10"
-              aria-invalid={errors.spiciness_scale ? "true" : "false"}
-              {...register("spiciness_scale", {
-                required: "Please enter spiciness of soup.",
-              })}
-            />
-          </>
+          <div className="spiciness-contanier">
+            <p>Spiciness Scale:</p>
+            <div className="radio-container">
+              <div className="radio-element">
+                <label htmlFor="spiciness_scale-1">1</label>
+                <input
+                  type="radio"
+                  value="1"
+                  defaultChecked
+                  aria-invalid={errors.spiciness_scale ? "true" : "false"}
+                  {...register("spiciness_scale", {
+                    required: "Please enter spiciness of soup.",
+                  })}
+                  id="piciness_scale-1"
+                />
+              </div>
+
+              <div className="radio-element">
+                <label htmlFor="spiciness_scale-2">2</label>
+                <input
+                  type="radio"
+                  value="2"
+                  aria-invalid={errors.spiciness_scale ? "true" : "false"}
+                  {...register("spiciness_scale", {
+                    required: "Please enter spiciness of soup.",
+                  })}
+                  id="piciness_scale-2"
+                />
+              </div>
+
+              <div className="radio-element">
+                <label htmlFor="spiciness_scale-3">3</label>
+                <input
+                  type="radio"
+                  value="3"
+                  aria-invalid={errors.spiciness_scale ? "true" : "false"}
+                  {...register("spiciness_scale", {
+                    required: "Please enter spiciness of soup.",
+                  })}
+                  id="piciness_scale-3"
+                />
+              </div>
+
+              <div className="radio-element">
+                <label htmlFor="spiciness_scale-4">4</label>
+                <input
+                  type="radio"
+                  value="4"
+                  aria-invalid={errors.spiciness_scale ? "true" : "false"}
+                  {...register("spiciness_scale", {
+                    required: "Please enter spiciness of soup.",
+                  })}
+                  id="piciness_scale-4"
+                />
+              </div>
+
+              <div className="radio-element">
+                <label htmlFor="spiciness_scale-5">5</label>
+                <input
+                  type="radio"
+                  value="5"
+                  aria-invalid={errors.spiciness_scale ? "true" : "false"}
+                  {...register("spiciness_scale", {
+                    required: "Please enter spiciness of soup.",
+                  })}
+                  id="piciness_scale-5"
+                />
+              </div>
+
+              <div className="radio-element">
+                <label htmlFor="spiciness_scale-6">6</label>
+                <input
+                  type="radio"
+                  value="6"
+                  aria-invalid={errors.spiciness_scale ? "true" : "false"}
+                  {...register("spiciness_scale", {
+                    required: "Please enter spiciness of soup.",
+                  })}
+                  id="piciness_scale-6"
+                />
+              </div>
+
+              <div className="radio-element">
+                <label htmlFor="spiciness_scale-7">7</label>
+                <input
+                  type="radio"
+                  value="7"
+                  aria-invalid={errors.spiciness_scale ? "true" : "false"}
+                  {...register("spiciness_scale", {
+                    required: "Please enter spiciness of soup.",
+                  })}
+                  id="piciness_scale-7"
+                />
+              </div>
+
+              <div className="radio-element">
+                <label htmlFor="spiciness_scale-8">8</label>
+                <input
+                  type="radio"
+                  value="8"
+                  aria-invalid={errors.spiciness_scale ? "true" : "false"}
+                  {...register("spiciness_scale", {
+                    required: "Please enter spiciness of soup.",
+                  })}
+                  id="piciness_scale-8"
+                />
+              </div>
+
+              <div className="radio-element">
+                <label htmlFor="spiciness_scale-9">9</label>
+                <input
+                  type="radio"
+                  value="9"
+                  aria-invalid={errors.spiciness_scale ? "true" : "false"}
+                  {...register("spiciness_scale", {
+                    required: "Please enter spiciness of soup.",
+                  })}
+                  id="piciness_scale-9"
+                />
+              </div>
+
+              <div className="radio-element">
+                <label htmlFor="spiciness_scale-10">10</label>
+                <input
+                  type="radio"
+                  value="10"
+                  aria-invalid={errors.spiciness_scale ? "true" : "false"}
+                  {...register("spiciness_scale", {
+                    required: "Please enter spiciness of soup.",
+                  })}
+                  id="piciness_scale-10"
+                />
+              </div>
+            </div>
+          </div>
         )}
         {type === "sandwich" && (
           <>
