@@ -40,6 +40,20 @@
   flex-direction: column;
   width: clamp(300px, 600px, 40%);
   z-index: 3;
+  margin-top: 10px;
+  background-color: #242424;
+}
+.alert {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  color: #ea5353;
+}
+.error {
+  font-size: 1.5rem;
+}
+.error p:first-child {
+  font-weight: 900;
+  color: #ea5353;
 }
 label {
   display: none;
@@ -243,13 +257,6 @@ input[type="submit"] {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
-.sandwich-error {
-  font-size: 1.5rem;
-}
-.sandwich-error p:first-child {
-  font-weight: 900;
-  color: #ea5353;
 }
 .bread {
   position: relative;

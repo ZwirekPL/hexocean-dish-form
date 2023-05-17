@@ -28,14 +28,23 @@ export default function Form() {
     watch,
     formState: { errors },
   } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    console.log(JSON.stringify(data));
+    fetch("https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes/", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  };
 
   const type = watch("type");
-  const valueOfName = watch("name");
   const diameter = watch("diameter", 45);
   const noOfSlices = watch("no_of_slices", 0);
   const spiciness = watch("spiciness_scale", 0);
-  const slicesOfBread = watch("slices_of_bread", 0);
+  const slicesOfBread = watch("slices_of_bread", 1);
 
   return (
     <div className="wrapper">
@@ -49,24 +58,41 @@ export default function Form() {
           id="name"
           aria-invalid={errors.name ? "true" : "false"}
           {...register("name", {
-            required: "Please enter name.",
+            required: true,
+            minLength: 3,
           })}
         />
+        {errors.name?.type === "required" && (
+          <p className="alert" role="alert">
+            Name is required!
+          </p>
+        )}
+        {errors.name?.type === "minLength" && (
+          <p className="alert" role="alert">
+            The Name must have at least 3 characters!
+          </p>
+        )}
         <label htmlFor="preparation_time">Preparation Time:</label>
         <input
           type="time"
           id="preparation_time"
           aria-invalid={errors.preparation_time ? "true" : "false"}
           {...register("preparation_time", {
-            required: `Please enter preparation time of ${valueOfName} `,
+            required: true,
           })}
           step="1"
         />
+        {errors.preparation_time?.type === "required" && (
+          <p className="alert" role="alert">
+            Preparation time is required!
+          </p>
+        )}
         <label htmlFor="type">Dish Type:</label>
         <select
           id="type"
+          aria-invalid={errors.type ? "true" : "false"}
           {...register("type", {
-            required: "Please select option.",
+            required: true,
           })}
         >
           <option value="" disabled selected>
@@ -76,6 +102,11 @@ export default function Form() {
           <option value="soup">Soup</option>
           <option value="sandwich">Sandwich</option>
         </select>
+        {errors.type?.type === "required" && (
+          <p className="alert" role="alert">
+            Dish type is required!
+          </p>
+        )}
         {type === "pizza" && (
           <>
             <label htmlFor="no_of_slices">no_of_slices:</label>
@@ -84,13 +115,19 @@ export default function Form() {
               id="no_of_slices"
               type="number"
               // Can you cut a pizza into an odd number of pieces?
+              minLength={1}
               step={2}
               max={16}
               aria-invalid={errors.no_of_slices ? "true" : "false"}
               {...register("no_of_slices", {
-                required: "Please enter number of slices.",
+                required: true,
               })}
             />
+            {errors.no_of_slices?.type === "required" && (
+              <p className="alert" role="alert">
+                Number of slices is required!
+              </p>
+            )}
             <label
               htmlFor="diameter"
               style={{ textTransform: "capitalize", display: "block" }}
@@ -105,9 +142,14 @@ export default function Form() {
               step="0.1"
               aria-invalid={errors.diameter ? "true" : "false"}
               {...register("diameter", {
-                required: "Please enter diameter of pizza.",
+                required: true,
               })}
             />
+            {errors.no_of_slices?.type === "required" && (
+              <p className="alert" role="alert">
+                Number of slices is required!
+              </p>
+            )}
           </>
         )}
         {type === "soup" && (
@@ -118,11 +160,10 @@ export default function Form() {
                 <label htmlFor="spiciness_scale-1">1</label>
                 <input
                   type="radio"
-                  value="1"
-                  // defaultChecked
+                  value={1}
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
-                    required: "Please enter spiciness of soup.",
+                    required: true,
                   })}
                   id="piciness_scale-1"
                 />
@@ -132,10 +173,10 @@ export default function Form() {
                 <label htmlFor="spiciness_scale-2">2</label>
                 <input
                   type="radio"
-                  value="2"
+                  value={2}
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
-                    required: "Please enter spiciness of soup.",
+                    required: true,
                   })}
                   id="piciness_scale-2"
                 />
@@ -145,10 +186,10 @@ export default function Form() {
                 <label htmlFor="spiciness_scale-3">3</label>
                 <input
                   type="radio"
-                  value="3"
+                  value={3}
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
-                    required: "Please enter spiciness of soup.",
+                    required: true,
                   })}
                   id="piciness_scale-3"
                 />
@@ -158,10 +199,10 @@ export default function Form() {
                 <label htmlFor="spiciness_scale-4">4</label>
                 <input
                   type="radio"
-                  value="4"
+                  value={4}
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
-                    required: "Please enter spiciness of soup.",
+                    required: true,
                   })}
                   id="piciness_scale-4"
                 />
@@ -171,10 +212,10 @@ export default function Form() {
                 <label htmlFor="spiciness_scale-5">5</label>
                 <input
                   type="radio"
-                  value="5"
+                  value={5}
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
-                    required: "Please enter spiciness of soup.",
+                    required: true,
                   })}
                   id="piciness_scale-5"
                 />
@@ -184,10 +225,10 @@ export default function Form() {
                 <label htmlFor="spiciness_scale-6">6</label>
                 <input
                   type="radio"
-                  value="6"
+                  value={6}
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
-                    required: "Please enter spiciness of soup.",
+                    required: true,
                   })}
                   id="piciness_scale-6"
                 />
@@ -197,10 +238,10 @@ export default function Form() {
                 <label htmlFor="spiciness_scale-7">7</label>
                 <input
                   type="radio"
-                  value="7"
+                  value={7}
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
-                    required: "Please enter spiciness of soup.",
+                    required: true,
                   })}
                   id="piciness_scale-7"
                 />
@@ -210,10 +251,10 @@ export default function Form() {
                 <label htmlFor="spiciness_scale-8">8</label>
                 <input
                   type="radio"
-                  value="8"
+                  value={8}
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
-                    required: "Please enter spiciness of soup.",
+                    required: true,
                   })}
                   id="piciness_scale-8"
                 />
@@ -223,10 +264,10 @@ export default function Form() {
                 <label htmlFor="spiciness_scale-9">9</label>
                 <input
                   type="radio"
-                  value="9"
+                  value={9}
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
-                    required: "Please enter spiciness of soup.",
+                    required: true,
                   })}
                   id="piciness_scale-9"
                 />
@@ -236,15 +277,20 @@ export default function Form() {
                 <label htmlFor="spiciness_scale-10">10</label>
                 <input
                   type="radio"
-                  value="10"
+                  value={10}
                   aria-invalid={errors.spiciness_scale ? "true" : "false"}
                   {...register("spiciness_scale", {
-                    required: "Please enter spiciness of soup.",
+                    required: true,
                   })}
                   id="piciness_scale-10"
                 />
               </div>
             </div>
+            {errors.spiciness_scale?.type === "required" && (
+              <p className="alert" role="alert">
+                Spiciness scale is required!
+              </p>
+            )}
           </div>
         )}
         {type === "sandwich" && (
@@ -254,13 +300,18 @@ export default function Form() {
               id="slices_of_bread"
               placeholder="Number of slices of bread"
               type="number"
-              min="1"
-              max="24"
+              min={1}
+              max={24}
               aria-invalid={errors.slices_of_bread ? "true" : "false"}
               {...register("slices_of_bread", {
-                required: "Please enter slices of bread in sandwich.",
+                required: true,
               })}
             />
+            {errors.slices_of_bread?.type === "required" && (
+              <p className="alert" role="alert">
+                Number of slices of bread is required!
+              </p>
+            )}
           </>
         )}
         <input type="submit" />
@@ -268,11 +319,8 @@ export default function Form() {
     </div>
   );
 }
-//validate form
-// handle error
-// try send to server
 // validate error from server
 // refactor
+// reset form is dirty
 // write a readme
-//15h - writing
-// push to vercel
+//19h - writing
