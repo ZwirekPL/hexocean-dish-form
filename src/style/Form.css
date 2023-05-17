@@ -96,34 +96,34 @@ input[type="radio"] {
   margin: 0px;
   width: 1.5rem;
 }
-input[type="radio"]#piciness_scale-1 {
+input[type="radio"]#spiciness_scale-1 {
   accent-color: rgb(0, 255, 0);
 }
-input[type="radio"]#piciness_scale-2 {
+input[type="radio"]#spiciness_scale-2 {
   accent-color: rgb(75, 255, 0);
 }
-input[type="radio"]#piciness_scale-3 {
+input[type="radio"]#spiciness_scale-3 {
   accent-color: rgb(150, 255, 0);
 }
-input[type="radio"]#piciness_scale-4 {
+input[type="radio"]#spiciness_scale-4 {
   accent-color: rgb(225, 255, 0);
 }
-input[type="radio"]#piciness_scale-5 {
+input[type="radio"]#spiciness_scale-5 {
   accent-color: rgb(255, 255, 0);
 }
-input[type="radio"]#piciness_scale-6 {
+input[type="radio"]#spiciness_scale-6 {
   accent-color: rgb(255, 225, 0);
 }
-input[type="radio"]#piciness_scale-7 {
+input[type="radio"]#spiciness_scale-7 {
   accent-color: rgb(255, 150, 0);
 }
-input[type="radio"]#piciness_scale-8 {
+input[type="radio"]#spiciness_scale-8 {
   accent-color: rgb(255, 75, 0);
 }
-input[type="radio"]#piciness_scale-9 {
+input[type="radio"]#spiciness_scale-9 {
   accent-color: rgb(255, 40, 0);
 }
-input[type="radio"]#piciness_scale-10 {
+input[type="radio"]#spiciness_scale-10 {
   accent-color: rgb(255, 0, 0);
 }
 input[type="submit"] {
