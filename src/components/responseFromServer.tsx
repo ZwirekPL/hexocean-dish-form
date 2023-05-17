@@ -54,7 +54,7 @@ const ResponseFromServer = ({ data }: ResponseFromServerProps) => {
         <p>{data.slices_of_bread}</p>
       </div>
       <button onClick={handleResponseFromServerBtn} className="response-btn">
-        Back to main form
+        Back to form
       </button>
     </div>
   );

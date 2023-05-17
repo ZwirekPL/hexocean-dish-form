@@ -14,8 +14,8 @@ const Sandwich = ({ slicesOfBread }: SandwichProps) => {
       {slicesOfBread <= 0 && (
         <div className="error">
           <p>Error</p>
-          <p>How would you like to cut a pizza into {slicesOfBread} pieces?</p>
-          <p>Please correct the value to a positive and even number !</p>
+          <p>How would you like to set {slicesOfBread} pieces of bread?</p>
+          <p>Please correct the value to a positive number !</p>
         </div>
       )}
       {Array.from(Array(Number(positiveSlicesOfBread)).keys()).map(

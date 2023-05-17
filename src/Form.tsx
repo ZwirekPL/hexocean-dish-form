@@ -81,10 +81,10 @@ export default function Form() {
         <input
           placeholder="Dish Name"
           id="name"
+          minLength={3}
           aria-invalid={errors.name ? "true" : "false"}
           {...register("name", {
             required: true,
-            minLength: 3,
           })}
         />
         {errors.name?.type === "required" && (
@@ -162,9 +162,9 @@ export default function Form() {
             <input
               id="diameter"
               type="range"
-              max="45"
-              min="25"
-              step="0.1"
+              max={45}
+              min={25}
+              step={0.1}
               aria-invalid={errors.diameter ? "true" : "false"}
               {...register("diameter", {
                 required: true,
@@ -190,7 +190,7 @@ export default function Form() {
                   {...register("spiciness_scale", {
                     required: true,
                   })}
-                  id="piciness_scale-1"
+                  id="spiciness_scale-1"
                 />
               </div>
               <div className="radio-element">
@@ -202,7 +202,7 @@ export default function Form() {
                   {...register("spiciness_scale", {
                     required: true,
                   })}
-                  id="piciness_scale-2"
+                  id="spiciness_scale-2"
                 />
               </div>
               <div className="radio-element">
@@ -214,7 +214,7 @@ export default function Form() {
                   {...register("spiciness_scale", {
                     required: true,
                   })}
-                  id="piciness_scale-3"
+                  id="spiciness_scale-3"
                 />
               </div>
               <div className="radio-element">
@@ -226,7 +226,7 @@ export default function Form() {
                   {...register("spiciness_scale", {
                     required: true,
                   })}
-                  id="piciness_scale-4"
+                  id="spiciness_scale-4"
                 />
               </div>
               <div className="radio-element">
@@ -238,7 +238,7 @@ export default function Form() {
                   {...register("spiciness_scale", {
                     required: true,
                   })}
-                  id="piciness_scale-5"
+                  id="spiciness_scale-5"
                 />
               </div>
               <div className="radio-element">
@@ -250,7 +250,7 @@ export default function Form() {
                   {...register("spiciness_scale", {
                     required: true,
                   })}
-                  id="piciness_scale-6"
+                  id="spiciness_scale-6"
                 />
               </div>
               <div className="radio-element">
@@ -262,7 +262,7 @@ export default function Form() {
                   {...register("spiciness_scale", {
                     required: true,
                   })}
-                  id="piciness_scale-7"
+                  id="spiciness_scale-7"
                 />
               </div>
               <div className="radio-element">
@@ -274,7 +274,7 @@ export default function Form() {
                   {...register("spiciness_scale", {
                     required: true,
                   })}
-                  id="piciness_scale-8"
+                  id="spiciness_scale-8"
                 />
               </div>
               <div className="radio-element">
@@ -286,7 +286,7 @@ export default function Form() {
                   {...register("spiciness_scale", {
                     required: true,
                   })}
-                  id="piciness_scale-9"
+                  id="spiciness_scale-9"
                 />
               </div>
               <div className="radio-element">
@@ -298,7 +298,7 @@ export default function Form() {
                   {...register("spiciness_scale", {
                     required: true,
                   })}
-                  id="piciness_scale-10"
+                  id="spiciness_scale-10"
                 />
               </div>
             </div>
@@ -335,5 +335,3 @@ export default function Form() {
     </div>
   );
 }
-// write a readme
-//22h - writing
