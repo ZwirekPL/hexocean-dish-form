@@ -1,9 +1,15 @@
+//WIRGILIUSZ ŁADZIŃSKI - praca.wirgiliusz@gmail.com
+
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useState } from "react";
 
 import "./style/Form.css";
 import Pizza from "./components/pizza";
 import Soup from "./components/soup";
 import Sandwich from "./components/sandwich";
+import Loader from "./components/loader";
+import ErrorComponent from "./components/error";
+import ConfrimRequestFromServer from "./components/confirmRequest";
 
 enum TypeEnum {
   pizza = "pizza",
@@ -11,7 +17,7 @@ enum TypeEnum {
   sandwich = "sandwich",
 }
 
-interface IFormInput {
+interface FormInput {
   name: string;
   preparation_time: number;
   type: TypeEnum;
@@ -22,22 +28,38 @@ interface IFormInput {
 }
 
 export default function Form() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [requestFailed, setRequestFailed] = useState(false);
+  const [requestFromServer, setRequestFromServer] = useState();
+  const [errorData, setErrorData] = useState("");
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = useForm<FormInput>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(JSON.stringify(data));
+  const onSubmit: SubmitHandler<FormInput> = (data) => {
+    setIsLoading(true);
     fetch("https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes/", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },
     })
-      .then((res) => res.json())
-      .then((json) => console.log(json));
+      .then((response) => {
+        if (!response.ok) throw new Error(`${response.status}`);
+        else return response.json();
+      })
+      .then((data) => {
+        setRequestFromServer(data);
+        setIsLoading(false);
+        setRequestFailed(false);
+      })
+      .catch((error) => {
+        setRequestFailed(true);
+        setErrorData(`${error}`);
+        setIsLoading(false);
+      });
   };
 
   const type = watch("type");
@@ -45,9 +67,17 @@ export default function Form() {
   const noOfSlices = watch("no_of_slices", 0);
   const spiciness = watch("spiciness_scale", 0);
   const slicesOfBread = watch("slices_of_bread", 1);
+  console.log(errorData);
+  console.log(requestFromServer);
+  console.log(requestFailed);
 
   return (
     <div className="wrapper">
+      {requestFromServer && (
+        <ConfrimRequestFromServer data={requestFromServer} />
+      )}
+      {requestFailed && <ErrorComponent data={errorData} />}
+      {isLoading && <Loader />}
       {type === "pizza" && <Pizza size={diameter} noOfSlices={noOfSlices} />}
       {type === "soup" && <Soup spiciness={spiciness} />}
       {type === "sandwich" && <Sandwich slicesOfBread={slicesOfBread} />}
@@ -90,12 +120,13 @@ export default function Form() {
         <label htmlFor="type">Dish Type:</label>
         <select
           id="type"
+          defaultValue="Select Dish Type"
           aria-invalid={errors.type ? "true" : "false"}
           {...register("type", {
             required: true,
           })}
         >
-          <option value="" disabled selected>
+          <option value="Select Dish Type" disabled>
             Select Dish Type
           </option>
           <option value="pizza">Pizza</option>
@@ -319,8 +350,6 @@ export default function Form() {
     </div>
   );
 }
-// validate error from server
 // refactor
-// reset form is dirty
 // write a readme
-//19h - writing
+//22h - writing
