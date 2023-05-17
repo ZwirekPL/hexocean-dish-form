@@ -9,7 +9,7 @@ import Soup from "./components/soup";
 import Sandwich from "./components/sandwich";
 import Loader from "./components/loader";
 import ErrorComponent from "./components/error";
-import ConfrimRequestFromServer from "./components/confirmRequest";
+import ResponseFromServer from "./components/responseFromServer";
 
 enum TypeEnum {
   pizza = "pizza",
@@ -28,9 +28,9 @@ interface FormInput {
 }
 
 export default function Form() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [requestFailed, setRequestFailed] = useState(false);
-  const [requestFromServer, setRequestFromServer] = useState();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [requestFailed, setRequestFailed] = useState<boolean>(false);
+  const [responseFromServer, setResponseFromServer] = useState();
   const [errorData, setErrorData] = useState("");
   const {
     register,
@@ -51,7 +51,7 @@ export default function Form() {
         else return response.json();
       })
       .then((data) => {
-        setRequestFromServer(data);
+        setResponseFromServer(data);
         setIsLoading(false);
         setRequestFailed(false);
       })
@@ -67,15 +67,10 @@ export default function Form() {
   const noOfSlices = watch("no_of_slices", 0);
   const spiciness = watch("spiciness_scale", 0);
   const slicesOfBread = watch("slices_of_bread", 1);
-  console.log(errorData);
-  console.log(requestFromServer);
-  console.log(requestFailed);
 
   return (
     <div className="wrapper">
-      {requestFromServer && (
-        <ConfrimRequestFromServer data={requestFromServer} />
-      )}
+      {responseFromServer && <ResponseFromServer data={responseFromServer} />}
       {requestFailed && <ErrorComponent data={errorData} />}
       {isLoading && <Loader />}
       {type === "pizza" && <Pizza size={diameter} noOfSlices={noOfSlices} />}
@@ -110,7 +105,7 @@ export default function Form() {
           {...register("preparation_time", {
             required: true,
           })}
-          step="1"
+          step={1}
         />
         {errors.preparation_time?.type === "required" && (
           <p className="alert" role="alert">
@@ -145,7 +140,6 @@ export default function Form() {
               placeholder="Number of slices"
               id="no_of_slices"
               type="number"
-              // Can you cut a pizza into an odd number of pieces?
               minLength={1}
               step={2}
               max={16}
@@ -199,7 +193,6 @@ export default function Form() {
                   id="piciness_scale-1"
                 />
               </div>
-
               <div className="radio-element">
                 <label htmlFor="spiciness_scale-2">2</label>
                 <input
@@ -212,7 +205,6 @@ export default function Form() {
                   id="piciness_scale-2"
                 />
               </div>
-
               <div className="radio-element">
                 <label htmlFor="spiciness_scale-3">3</label>
                 <input
@@ -225,7 +217,6 @@ export default function Form() {
                   id="piciness_scale-3"
                 />
               </div>
-
               <div className="radio-element">
                 <label htmlFor="spiciness_scale-4">4</label>
                 <input
@@ -238,7 +229,6 @@ export default function Form() {
                   id="piciness_scale-4"
                 />
               </div>
-
               <div className="radio-element">
                 <label htmlFor="spiciness_scale-5">5</label>
                 <input
@@ -251,7 +241,6 @@ export default function Form() {
                   id="piciness_scale-5"
                 />
               </div>
-
               <div className="radio-element">
                 <label htmlFor="spiciness_scale-6">6</label>
                 <input
@@ -264,7 +253,6 @@ export default function Form() {
                   id="piciness_scale-6"
                 />
               </div>
-
               <div className="radio-element">
                 <label htmlFor="spiciness_scale-7">7</label>
                 <input
@@ -277,7 +265,6 @@ export default function Form() {
                   id="piciness_scale-7"
                 />
               </div>
-
               <div className="radio-element">
                 <label htmlFor="spiciness_scale-8">8</label>
                 <input
@@ -290,7 +277,6 @@ export default function Form() {
                   id="piciness_scale-8"
                 />
               </div>
-
               <div className="radio-element">
                 <label htmlFor="spiciness_scale-9">9</label>
                 <input
@@ -303,7 +289,6 @@ export default function Form() {
                   id="piciness_scale-9"
                 />
               </div>
-
               <div className="radio-element">
                 <label htmlFor="spiciness_scale-10">10</label>
                 <input
@@ -350,6 +335,5 @@ export default function Form() {
     </div>
   );
 }
-// refactor
 // write a readme
 //22h - writing

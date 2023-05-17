@@ -76,11 +76,9 @@ const Pizza = ({ size, noOfSlices }: PizzaProps) => {
                   rotate: `${cuttingDeg(index)}deg`,
                   display: noOfSlices % 2 != 0 ? "none" : "block",
                 }}
-                //for max 16 slices
               ></div>
             )
           )}
-
           <div className="pizza-cheese">
             <div className="pepperoni-container">
               <div className="pepperoni"></div>
@@ -89,13 +87,13 @@ const Pizza = ({ size, noOfSlices }: PizzaProps) => {
         </div>
         {size && (
           <div
-            className="measure"
+            className="pizza-measure"
             style={{
               display: noOfSlices < 0 ? "none" : "block",
             }}
           >
             <p>{size}cm</p>
-            <div className="measure-segment" />
+            <div className="pizza-measure-segment" />
           </div>
         )}
       </div>

@@ -13,7 +13,6 @@
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
 }
-
 body {
   display: flex;
   margin: 0;
