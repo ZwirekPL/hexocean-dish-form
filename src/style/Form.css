@@ -1,20 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap");
 #root {
   font-family: "Poppins", sans-serif;
-  max-width: 1280px;
   margin: 0 auto;
+  max-width: 1280px;
   text-align: center;
 }
 
 /* FORM START */
 .wrapper {
-  width: 80vw;
-  height: calc(100vh - (4rem + 60px));
-  padding: 2rem;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - (4rem + 60px));
   justify-content: space-around;
-  align-items: center;
+  padding: 2rem;
+  width: 80vw;
 }
 /* RESPONSIVE */
 @media (max-height: 740px) and (orientation: portrait) {
@@ -31,29 +31,29 @@
 @media (min-width: 1024px) and (orientation: landscape) {
   .wrapper {
     height: calc(100vh - (3rem));
-    padding-bottom: 1rem;
     justify-content: space-between;
+    padding-bottom: 1rem;
   }
 }
 .form {
+  background-color: #242424;
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
   width: clamp(300px, 600px, 40%);
   z-index: 3;
-  margin-top: 10px;
-  background-color: #242424;
 }
 .alert {
+  color: #ea5353;
   font-size: 0.8rem;
   margin: 0.5rem 0;
-  color: #ea5353;
 }
 .error {
   font-size: 1.5rem;
 }
 .error p:first-child {
-  font-weight: 900;
   color: #ea5353;
+  font-weight: 900;
 }
 label {
   display: none;
@@ -62,8 +62,8 @@ input,
 select,
 option {
   border-radius: 6px;
-  height: 32px;
   font-size: 1rem;
+  height: 32px;
 }
 input::placeholder,
 select::placeholder,
@@ -78,23 +78,23 @@ select {
   margin: 0.5rem 0 0 1rem;
 }
 .radio-element {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
 }
 .radio-container {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 .radio-container label {
   display: flex;
   font-size: 0.8rem;
 }
 input[type="radio"] {
-  width: 1.5rem;
   margin: 0px;
+  width: 1.5rem;
 }
 input[type="radio"]#piciness_scale-1 {
   accent-color: rgb(0, 255, 0);
@@ -127,17 +127,20 @@ input[type="radio"]#piciness_scale-10 {
   accent-color: rgb(255, 0, 0);
 }
 input[type="submit"] {
-  margin-top: 1rem;
-  height: 36px;
-  border-radius: 6px;
   background: linear-gradient(145deg, #454545, #525252);
+  border-radius: 6px;
   box-shadow: 20px 20px 60px #414141, -20px -20px 60px #595959;
+  height: 36px;
+  margin-top: 1rem;
+}
+input[type="submit"]:hover {
+  cursor: pointer;
 }
 /* FORM END */
 /* PIZZA START */
 .pizza-container {
-  width: 100px;
   height: 100px;
+  width: 100px;
 }
 /* RESPONSIVE */
 @media (max-width: 1023px) and (orientation: landscape) {
@@ -151,49 +154,42 @@ input[type="submit"] {
   }
 }
 .pizza-dough {
-  width: 100%;
-  height: 100%;
+  align-items: center;
 
   background-color: #ff0000;
-  border-radius: 50%;
   border: 0.3rem solid #ffa500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 50%;
   box-shadow: inset 0px 0px 0px 10px #ff0000;
   box-shadow: 0px 0px 0px 0.4rem #dd8110;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
 }
 .pizza-slice {
-  width: 123%;
-  height: 1px;
   background-color: #000;
+  height: 1px;
   position: absolute;
+  width: 123%;
   z-index: 1;
 }
 .pizza-cheese {
-  width: 95%;
-  height: 95%;
+  align-items: center;
 
   background-color: #ffeb3b;
   border-radius: 50%;
   display: flex;
+  height: 95%;
   justify-content: center;
-  align-items: center;
+  width: 95%;
 }
 .pepperoni-container {
-  width: 96%;
   height: 96%;
 
   position: relative;
+  width: 96%;
 }
 .pepperoni {
-  width: 100%;
-  height: 100%;
-
-  position: absolute;
-  border-radius: 50%;
-  overflow: hidden;
-  transform: rotate(15deg);
   background-image: radial-gradient(
     circle at 1rem 1rem,
     #ea5353 7px,
@@ -201,28 +197,35 @@ input[type="submit"] {
     transparent 9px
   );
   background-size: 30% 30%;
+  border-radius: 50%;
+  height: 100%;
+  overflow: hidden;
+
+  position: absolute;
+  transform: rotate(15deg);
+  width: 100%;
 }
 .measure {
-  width: 100%;
   border-bottom: 2px solid white;
-  height: 2rem;
   font-size: 1rem;
+  height: 2rem;
+  width: 100%;
 }
 .measure-segment {
-  width: 100%;
-  border-right: 2px solid white;
   border-left: 2px solid white;
+  border-right: 2px solid white;
   height: 10px;
   transform: translate(-2px, -12px);
+  width: 100%;
 }
 /* PIZZA END */
 /* SOUP START */
 .soup-container {
-  width: 120px;
-  height: 120px;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  width: 120px;
 }
 .soup-bowl {
   position: absolute;
@@ -251,37 +254,37 @@ input[type="submit"] {
 /* SOUP END */
 /* SANDWICH START */
 .sandwich-container {
-  width: clamp(300px, 600px, 40%);
-  height: 300px;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
+  height: 300px;
   justify-content: center;
-  align-items: center;
+  width: clamp(300px, 600px, 40%);
 }
 .bread {
+  height: 80px;
   position: relative;
   width: 50px;
-  height: 80px;
 }
 .bread-base {
-  width: 4.96rem;
+  background-color: #ffda96;
+  border: 2.4px solid black;
+  border-radius: 2.4rem 2.4rem 0.8rem 0.8rem;
   height: 5.4rem;
   position: absolute;
-  background-color: #ffda96;
-  z-index: 2;
   top: 0.48rem;
-  border-radius: 2.4rem 2.4rem 0.8rem 0.8rem;
-  border: 2.4px solid black;
+  width: 4.96rem;
+  z-index: 2;
 }
 .bread-shadow {
-  position: absolute;
-  width: 5.48rem;
-  height: 5.84rem;
   background-color: #d3885c;
-  z-index: 1;
-  left: 0.12rem;
-  top: 0.12rem;
   border: 2px solid black;
   border-radius: 2.8rem 3.6rem 1.6rem 4rem;
+  height: 5.84rem;
+  left: 0.12rem;
+  position: absolute;
+  top: 0.12rem;
+  width: 5.48rem;
+  z-index: 1;
 }
 /* SANDWICH END */
